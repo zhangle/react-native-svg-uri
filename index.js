@@ -244,6 +244,9 @@ class SvgUri extends Component{
       .filter(utils.getEnabledAttributes(enabledAttributes.concat(COMMON_ATTS)))
       .reduce((acc, {nodeName, nodeValue}) => {
         acc[nodeName] = (this.state.fill && nodeName === 'fill' && nodeValue !== 'none') ? this.state.fill : nodeValue
+
+        acc[nodeName] = (this.state.href && nodeName === 'href') ? '{{uri: "' + this.state.href + '"}}' : nodeValue
+
         return acc
       }, {});
     Object.assign(componentAtts, styleAtts);
