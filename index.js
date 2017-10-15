@@ -18,6 +18,7 @@ import Svg,{
     Text,
     TSpan,
     Defs,
+    Image,
     Stop
 } from 'react-native-svg';
 
@@ -38,6 +39,7 @@ const ACCEPTED_SVG_ELEMENTS = [
   'polygon',
   'polyline',
   'text',
+  'image',
   'tspan'
 ];
 
@@ -236,7 +238,7 @@ class SvgUri extends Component{
       }));
     });
 
-     const componentAtts =  Array.from(attributes)
+    const componentAtts =  Array.from(attributes)
       .map(utils.camelCaseNodeName)
       .map(utils.removePixelsFromNodeValue)
       .filter(utils.getEnabledAttributes(enabledAttributes.concat(COMMON_ATTS)))
