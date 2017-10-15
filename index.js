@@ -56,6 +56,8 @@ const ELLIPSE_ATTS = ['cx', 'cy', 'rx', 'ry'];
 
 const TEXT_ATTS = ['fontFamily', 'fontSize', 'fontWeight']
 
+const IMAGE_ATTS = ['width', 'height', 'preserveAspectRatio', 'href', 'clipPath']
+
 const POLYGON_ATTS = ['points'];
 const POLYLINE_ATTS = ['points'];
 
@@ -207,6 +209,12 @@ class SvgUri extends Component{
         componentAtts.y = fixYPosition(componentAtts.y, node)
       }
       return <Text key={i} {...componentAtts}>{childs}</Text>;
+    case 'image':
+      componentAtts = this.obtainComponentAtts(node, IMAGE_ATTS);
+      if (componentAtts.y) {
+        componentAtts.y = fixYPosition(componentAtts.y, node)
+      }
+      return <Image key={i} {...componentAtts}>{childs}</Image>;
     case 'tspan':
       componentAtts = this.obtainComponentAtts(node, TEXT_ATTS);
       if (componentAtts.y) {
